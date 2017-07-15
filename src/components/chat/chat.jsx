@@ -34,7 +34,6 @@ export default class Chat extends Component {
   }
   updateQuestion(e){
     const question = e.currentTarget.value;
-    console.log(question);
     this.setState({question});
   }
 
