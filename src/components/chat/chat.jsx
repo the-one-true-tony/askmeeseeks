@@ -10,18 +10,34 @@ export default class Chat extends Component {
       chatHistory: [
         {
           user: "Mr. Meeseeks",
-          message: 'Ask me a question, Woooweeee!',
+          message: "I'm Mr. Meeseeks, look at me! Ask me a question.",
           time: currentTime
         }
       ]
     };
     this.askQuestion = this.askQuestion.bind(this);
     this.updateQuestion = this.updateQuestion.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+  componentDidMount(){
+    let chatButton = document.getElementById("chat-button");
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+  componentDidUpdate(){
+    let chatWindow = document.getElementById("chat-window");
+    chatWindow.scrollTop = chatWindow.scrollHeight;
   }
 
-  askQuestion(e){
-    e.preventDefault();
+  handleKeyPress(e){
+    console.log(e.keyCode);
+    if(e.keyCode === 13){
+      this.askQuestion();
+    }
+  }
+  askQuestion(){
     let { question, chatHistory } = this.state;
+    if(question === "") return;
+
     let chatPost = {
       user: "Jerry",
       message: question,
@@ -29,8 +45,10 @@ export default class Chat extends Component {
     };
     chatHistory.push(chatPost);
     this.setState({
-      chatHistory
+      chatHistory,
+      question: ""
     });
+
   }
   updateQuestion(e){
     const question = e.currentTarget.value;
@@ -39,19 +57,27 @@ export default class Chat extends Component {
 
 
   render(){
+    const { chatHistory, question } = this.state;
 
-    const { chatHistory } = this.state;
     return(
       <div>
-        Chatbot
-        <ChatHistory chatHistory={ chatHistory }/>
-        <input type='input'
-          placeholder='Ooh Wee ask me a question'
-          onChange={ this.updateQuestion} />
-        <input type ='submit'
-          value='Submit'
-          onClick={ this.askQuestion }
-        />
+        <div id="chat-window">
+          Chatbot
+          <ChatHistory chatHistory={ chatHistory }/>
+        </div>
+        <div className="chat-controls">
+          <input type='input'
+            className="chat-input"
+            placeholder='Ooh Wee ask me a question'
+            value={question}
+            onChange={ this.updateQuestion} />
+          <input type ='submit'
+            id = 'chat-button'
+            value='Submit'
+            className='chat-button'
+            onClick={ this.askQuestion }
+            />
+        </div>
       </div>
     );
   }

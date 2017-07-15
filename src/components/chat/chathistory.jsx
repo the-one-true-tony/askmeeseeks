@@ -8,15 +8,16 @@ export default class ChatHistory extends Component {
 
   render(){
     let chats = this.props.chatHistory;
-    console.log(chats);
     return(
       <ul>
         {chats.map((chat, i) => (
-          <li key={i}>
-            <div>
+          <li key={i} className={
+            chat.user === "Jerry" ? "list-item" : "list-item right"
+          }>
+            <div className="message-bubble">
               <img className="icon"
                 src={ chat.user === "Jerry" ? jerry : mrm }/>
-              <p>{chat.user}: {chat.message}</p>
+              <p>{chat.message}</p>
             </div>
           </li>
         ))}

@@ -21,5 +21,38 @@
     transform: rotate(360deg); } }
 
 /* Chat Section */
+#chat-window {
+  overflow-y: scroll;
+  height: 300px;
+  border: 1px solid; }
+
+.chat-input {
+  width: 400px; }
+
+.chat-button {
+  height: 106px;
+  width: 100px;
+  border: none;
+  margin: 10px;
+  background: url(http://res.cloudinary.com/dkw3fxfzr/image/upload/v1500158845/Mr._Meeseeks_Box_gxrmvi.png);
+  background-size: cover;
+  outline: none;
+  font-weight: 600;
+  color: blue; }
+
+.list-item {
+  display: flex; }
+
+.right {
+  justify-content: flex-end; }
+
 .icon {
-  height: 75px; }
+  height: 50px;
+  padding-right: 10px; }
+
+.message-bubble {
+  display: inline-flex;
+  border: 1px solid;
+  border-radius: 22px;
+  padding: 10px;
+  margin: 10px; }
