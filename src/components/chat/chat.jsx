@@ -20,7 +20,6 @@ export default class Chat extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   componentDidMount(){
-    let chatButton = document.getElementById("chat-button");
     window.addEventListener('keydown', this.handleKeyPress);
   }
   componentDidUpdate(){
@@ -71,12 +70,6 @@ export default class Chat extends Component {
             placeholder='Ooh Wee ask me a question'
             value={question}
             onChange={ this.updateQuestion} />
-          <input type ='submit'
-            id = 'chat-button'
-            value='Submit'
-            className='chat-button'
-            onClick={ this.askQuestion }
-            />
         </div>
       </div>
     );

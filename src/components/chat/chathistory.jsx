@@ -15,7 +15,7 @@ export default class ChatHistory extends Component {
             chat.user === "Jerry" ? "list-item" : "list-item right"
           }>
             <div className="message-bubble">
-              <img className="icon"
+              <img className="icon" alt="icon"
                 src={ chat.user === "Jerry" ? jerry : mrm }/>
               <p>{chat.message}</p>
             </div>
